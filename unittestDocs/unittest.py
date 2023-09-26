@@ -36,7 +36,9 @@ class Test(IsolatedAsyncioTestCase):
         events.append("setUp")
 
     async def asyncSetUp(self):
+        '''
         self._async_connection = await AsyncConnection()
+        '''
         events.append("asyncSetUp")
 
     async def test_response(self):
@@ -79,7 +81,9 @@ import unittest
 
 class WidgetTestCase(unittest.TestCase):
     def setUp(self):
+        '''
         self.widget = Widget('The widget')
+        '''
 
     def test_default_widget_size(self):
         self.assertEqual(self.widget.size(), (50,50),
@@ -125,12 +129,13 @@ class MyTestCase(unittest.TestCase):
     @unittest.skip("demonstrating skipping")
     def test_nothing(self):
         self.fail("shouldn't happen")
-
+    '''
     @unittest.skipIf(mylib.__version__ < (1, 3),
                      "not supported in this library version")
     def test_format(self):
         # Tests that work for only a certain version of the library.
         pass
+    
 
     @unittest.skipUnless(sys.platform.startswith("win"), "requires Windows")
     def test_windows_support(self):
@@ -142,7 +147,8 @@ class MyTestCase(unittest.TestCase):
             self.skipTest("external resource not available")
         # test code that depends on the external resource
         pass
-
+    '''
+#output:
 '''
 test_format (__main__.MyTestCase.test_format) ... skipped 'not supported in this library version'
 test_nothing (__main__.MyTestCase.test_nothing) ... skipped 'demonstrating skipping'
